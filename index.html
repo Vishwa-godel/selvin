@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. [Your Name] | Spine Surgeon</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS STYLES START HERE --- */
+        
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
+
+        /* Colors & Variables */
+        :root {
+            --primary-blue: #0056b3;
+            --dark-blue: #003d80;
+            --light-gray: #f4f7f6;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
+        .navbar { background-color: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; color: var(--primary-blue); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 700; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-blue); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            /* Fallback background color if image fails to load */
+            background-color: #003d80; 
+            background-image: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 61, 128, 0.8)), url('https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+        .btn { display: inline-block; background-color: var(--white); color: var(--primary-blue); padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background-color: #e6e6e6; }
+
+        /* Sections */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 10px; }
+        .section-subtitle { text-align: center; margin-bottom: 50px; color: #666; }
+        .bg-light { background-color: var(--light-gray); }
+
+        /* About Grid */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .specialty-list { margin-top: 15px; margin-left: 20px; }
+        .img-placeholder { width: 100%; height: 300px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #666; border-radius: 10px; font-weight: bold; }
+
+        /* Cases Cards */
+        .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .case-card { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); }
+        .case-card h3 { margin-bottom: 10px; color: var(--dark-blue); }
+        .case-meta { font-size: 0.9rem; color: #888; margin-bottom: 15px; font-style: italic; }
+
+        /* Contact Form */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
+        .contact-form button { background-color: var(--primary-blue); color: var(--white); width: 100%; font-size: 1rem; }
+        .contact-form button:hover { background-color: var(--dark-blue); }
+
+        /* Footer */
+        footer { background-color: var(--dark-blue); color: var(--white); text-align: center; padding: 20px 0; }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified mobile nav for this quick version */
+        }
+        /* --- CSS STYLES END HERE --- */
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#home" class="logo">Dr. [Your Name]</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#cases">Case Studies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Restoring Mobility, <br>Reclaiming Lives.</h1>
+            <p>Expert spinal care specializing in minimally invasive surgery and complex reconstruction.</p>
+            <a href="#contact" class="btn">Book a Consultation</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About the Surgeon</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>With over 15 years of experience, I specialize in treating complex spinal disorders. My philosophy centers on exhausting all non-surgical options before considering intervention.</p>
+                    <p><strong>Specialties:</strong></p>
+                    <ul class="specialty-list">
+                        <li>Minimally Invasive Spine Surgery</li>
+                        <li>Herniated Disc Repair</li>
+                        <li>Spinal Fusion & Reconstruction</li>
+                        <li>Scoliosis Correction</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder for your photo -->
+                    <div class="img-placeholder">Dr. Photo Placeholder</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section (Portfolio) -->
+    <section id="cases" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Patient Success Stories</h2>
+            <p class="section-subtitle">Real cases involving complex spinal pathologies and their outcomes.</p>
+            
+            <div class="cases-grid">
+                <!-- Case 1 -->
+                <div class="case-card">
+                    <h3>Lumbar Herniated Disc</h3>
+                    <p class="case-meta">Patient Age: 45 | Procedure: Microdiscectomy</p>
+                    <p><strong>Condition:</strong> Severe sciatica and foot drop affecting daily walking.</p>
+                    <p><strong>Outcome:</strong> Complete pain resolution 2 weeks post-op. Returned to full athletic activity within 3 months.</p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card">
+                    <h3>Degenerative Scoliosis</h3>
+                    <p class="case-meta">Patient Age: 68 | Procedure: Spinal Fusion (L2-L5)</p>
+                    <p><strong>Condition:</strong> Chronic back pain and inability to stand for >10 minutes.</p>
+                    <p><strong>Outcome:</strong> Significant posture correction. Patient now walks 3 miles daily without pain.</p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card">
+                    <h3>Cervical Stenosis</h3>
+                    <p class="case-meta">Patient Age: 52 | Procedure: Cervical Arthroplasty</p>
+                    <p><strong>Condition:</strong> Numbness in hands and loss of fine motor skills.</p>
+                    <p><strong>Outcome:</strong> Nerve decompression restored hand function. Motion preserved in the neck.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Clinic Location</h3>
+                    <p>123 Medical Center Drive, Suite 400<br>City, State, Zip Code</p>
+                    
+                    <h3>Contact Details</h3>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: contact@drspinename.com</p>
+                    
+                    <h3>Hours</h3>
+                    <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                </div>
+                
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <textarea rows="5" placeholder="Briefly describe your condition" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dr. [Your Name]. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
