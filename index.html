@@ -3,196 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. [Your Name] | Spine Surgeon</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
+    <title>Dr. Selvin Prabhakar V - Spine Care Clinic</title>
     <style>
-        /* --- CSS STYLES START HERE --- */
-        
-        /* General Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Lato', sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
-
-        /* Colors & Variables */
         :root {
-            --primary-blue: #0056b3;
-            --dark-blue: #003d80;
-            --light-gray: #f4f7f6;
-            --text-color: #333;
+            --primary-color: #005b96;
+            --secondary-color: #6497b1;
+            --accent-color: #03396c;
+            --text-dark: #333333;
+            --text-light: #555555;
             --white: #ffffff;
+            --light-bg: #f8f9fa;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        /* Navigation */
-        .navbar { background-color: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; color: var(--primary-blue); text-decoration: none; }
-        .nav-links { list-style: none; display: flex; }
-        .nav-links li { margin-left: 20px; }
-        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 700; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--primary-blue); }
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            /* Fallback background color if image fails to load */
-            background-color: #003d80; 
-            background-image: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 61, 128, 0.8)), url('https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero .credentials {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero .fellowship {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-transform: uppercase;
+        }
+
+        /* Quick Info Bar */
+        .quick-info {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* About Section - UPDATED WITH PHOTO LAYOUT */
+        .section {
+            padding: 70px 0;
+        }
+
+        .about-content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .doctor-photo-frame {
+            flex: 0 0 350px; /* Fixed width for photo */
+            position: relative;
+        }
+
+        .doctor-photo-frame img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: block;
+            border: 4px solid var(--white);
+        }
+
+        .doctor-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary-color);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        /* Location Section */
+        .contact-section {
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-card {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .phone-highlight {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .map-placeholder {
+            background-color: #eee;
+            height: 100%;
+            min-height: 350px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 70px;
+            justify-content: center;
+            color: #888;
+            font-weight: bold;
+            border: 2px dashed #ccc;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
-        .btn { display: inline-block; background-color: var(--white); color: var(--primary-blue); padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; border: none; cursor: pointer; }
-        .btn:hover { background-color: #e6e6e6; }
-
-        /* Sections */
-        .section { padding: 80px 0; }
-        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 10px; }
-        .section-subtitle { text-align: center; margin-bottom: 50px; color: #666; }
-        .bg-light { background-color: var(--light-gray); }
-
-        /* About Grid */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .specialty-list { margin-top: 15px; margin-left: 20px; }
-        .img-placeholder { width: 100%; height: 300px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #666; border-radius: 10px; font-weight: bold; }
-
-        /* Cases Cards */
-        .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .case-card { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); }
-        .case-card h3 { margin-bottom: 10px; color: var(--dark-blue); }
-        .case-meta { font-size: 0.9rem; color: #888; margin-bottom: 15px; font-style: italic; }
-
-        /* Contact Form */
-        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
-        .contact-form button { background-color: var(--primary-blue); color: var(--white); width: 100%; font-size: 1rem; }
-        .contact-form button:hover { background-color: var(--dark-blue); }
 
         /* Footer */
-        footer { background-color: var(--dark-blue); color: var(--white); text-align: center; padding: 20px 0; }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Simplified mobile nav for this quick version */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
         }
-        /* --- CSS STYLES END HERE --- */
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .doctor-photo-frame {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: 30px;
+            }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .credentials { font-size: 0.9rem; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-content">
-            <a href="#home" class="logo">Dr. [Your Name]</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#cases">Case Studies</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Restoring Mobility, <br>Reclaiming Lives.</h1>
-            <p>Expert spinal care specializing in minimally invasive surgery and complex reconstruction.</p>
-            <a href="#contact" class="btn">Book a Consultation</a>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Dr. Selvin Spine Care</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Specialties</a>
+                    <a href="#contact">Visit Us</a>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- Quick Info Bar -->
+    <div class="quick-info">
+        <div class="container">
+            <span>📞 +91-95970 05509 &nbsp;&nbsp;|&nbsp;&nbsp; 📍 Perungudi, Chennai</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Dr. Selvin Prabhakar V</h1>
+            <div class="credentials">
+                M.S. (Ortho) | D.N.B. (Ortho) | F.N.B (Spine Surgery) | M.N.A.M.S.
+            </div>
+            <div class="fellowship">
+                Fellowship in Endoscopy and Deformity Surgery (South Korea)
+            </div>
+            <div class="tagline">
+                Restore • Realign • Recover
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Photo -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About the Surgeon</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>With over 15 years of experience, I specialize in treating complex spinal disorders. My philosophy centers on exhausting all non-surgical options before considering intervention.</p>
-                    <p><strong>Specialties:</strong></p>
-                    <ul class="specialty-list">
-                        <li>Minimally Invasive Spine Surgery</li>
-                        <li>Herniated Disc Repair</li>
-                        <li>Spinal Fusion & Reconstruction</li>
-                        <li>Scoliosis Correction</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <!-- Placeholder for your photo -->
-                    <div class="img-placeholder">Dr. Photo Placeholder</div>
-                </div>
+            <div class="section-title">
+                <h2>About Your Doctor</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Cases Section (Portfolio) -->
-    <section id="cases" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Patient Success Stories</h2>
-            <p class="section-subtitle">Real cases involving complex spinal pathologies and their outcomes.</p>
             
-            <div class="cases-grid">
-                <!-- Case 1 -->
-                <div class="case-card">
-                    <h3>Lumbar Herniated Disc</h3>
-                    <p class="case-meta">Patient Age: 45 | Procedure: Microdiscectomy</p>
-                    <p><strong>Condition:</strong> Severe sciatica and foot drop affecting daily walking.</p>
-                    <p><strong>Outcome:</strong> Complete pain resolution 2 weeks post-op. Returned to full athletic activity within 3 months.</p>
+            <div class="about-content-wrapper">
+                <!-- PHOTO AREA -->
+                <div class="doctor-photo-frame">
+                    <!-- IMPORTANT: Convert your PDF to 'selvin.jpg' and put it in the same folder -->
+                    <img src="selvin.png" alt="Dr. Selvin Prabhakar V - Spine Surgeon">
                 </div>
 
-                <!-- Case 2 -->
-                <div class="case-card">
-                    <h3>Degenerative Scoliosis</h3>
-                    <p class="case-meta">Patient Age: 68 | Procedure: Spinal Fusion (L2-L5)</p>
-                    <p><strong>Condition:</strong> Chronic back pain and inability to stand for >10 minutes.</p>
-                    <p><strong>Outcome:</strong> Significant posture correction. Patient now walks 3 miles daily without pain.</p>
-                </div>
-
-                <!-- Case 3 -->
-                <div class="case-card">
-                    <h3>Cervical Stenosis</h3>
-                    <p class="case-meta">Patient Age: 52 | Procedure: Cervical Arthroplasty</p>
-                    <p><strong>Condition:</strong> Numbness in hands and loss of fine motor skills.</p>
-                    <p><strong>Outcome:</strong> Nerve decompression restored hand function. Motion preserved in the neck.</p>
+                <!-- TEXT AREA -->
+                <div class="about-text">
+                    <p><strong>Dr. Selvin Prabhakar V</strong> is a Consultant Orthopaedic Spine Surgeon with more than 10 years of experience in treating spine-related problems.</p>
+                    
+                    <p>He completed his MBBS from Government Kilpauk Medical College, Chennai, followed by M.S. in Orthopaedics from Indira Gandhi Medical College, Shimla. He also completed D.N.B. in Orthopaedics. With a growing interest in spine care, he pursued advanced super-specialty training (F.N.B.) in Spine Surgery from I-NK, Kolkata.</p>
+                    
+                    <p>To further enhance his expertise, Dr. Selvin Prabhakar underwent specialized training in <strong>Advanced Endoscopic Spine Surgery</strong> and <strong>Deformity Correction Surgery</strong> in South Korea, gaining exposure to the latest global techniques and technologies.</p>
+                    
+                    <p>He specializes in endoscopic spine surgery, minimally invasive spine procedures, pain management treatments, deformity correction, and complex spine conditions. His treatment philosophy focuses on accurate diagnosis, minimal tissue damage, quicker recovery, and long-term relief.</p>
+                    
+                    <p>Dr. Selvin Prabhakar has published multiple research papers in international peer-reviewed journals, contributed to medical textbook chapters, and has presented his work at national and international conferences. He is also a national-level faculty for endoscopic spine surgery, actively involved in training fellow spine surgeons.</p>
+                    
+                    <p>His aim is to provide ethical, honest, and patient-centred spine care, using advanced techniques while ensuring clear communication, realistic expectations, and compassionate treatment—helping patients return to a healthy, active, and pain-free life.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
         <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Clinic Location</h3>
-                    <p>123 Medical Center Drive, Suite 400<br>City, State, Zip Code</p>
-                    
-                    <h3>Contact Details</h3>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Email: contact@drspinename.com</p>
-                    
-                    <h3>Hours</h3>
-                    <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+            <div class="section-title">
+                <h2>Specialist Services</h2>
+                <p>Expert care for spine health</p>
+            </div>
+            <div class="services-grid">
+                <!-- Services Cards -->
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Endoscopy</h3>
+                    <p>Advanced endoscopic procedures for minimal tissue disruption.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💉</div>
+                    <h3>Pain Procedures</h3>
+                    <p>Targeted interventions for chronic pain relief.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Minimally Invasive Surgery</h3>
+                    <p>Techniques designed to reduce scarring and speed up recovery.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🦴</div>
+                    <h3>Deformity Correction</h3>
+                    <p>Expert realignment for scoliosis and structural issues.</p>
                 </div>
                 
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Phone Number">
-                    <textarea rows="5" placeholder="Briefly describe your condition" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                 <div class="service-card">
+                    <div class="service-icon">🦠</div>
+                    <h3>Infection & Tumour</h3>
+                    <p>Comprehensive management of spinal infections and tumours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Clinic Location & Hours</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <h4>Clinic Address</h4>
+                        <p><strong>ASVINI AADHIRA</strong><br>
+                        Plot 44, 1st Main Rd, Thirumalai Nagar Annexe,<br>
+                        Perungudi, Chennai - 96</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Consultation Timings</h4>
+                        <p><strong>MON | WED | FRI</strong><br>
+                        6:00 PM to 8:00 PM</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>Appointments</h4>
+                        <p class="phone-highlight">+91-95970 05509</p>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </section>
@@ -200,7 +467,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Dr. [Your Name]. All rights reserved.</p>
+            <h3>Dr. Selvin Prabhakar V</h3>
+            <p>Restore • Realign • Recover</p>
+            <div class="copyright">
+                <p>&copy; 2026 Dr. Selvin Prabhakar V. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
